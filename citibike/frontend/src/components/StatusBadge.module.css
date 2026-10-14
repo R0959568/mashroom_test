@@ -1,0 +1,29 @@
+.badge {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.ok {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.info {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.muted {
+  background: var(--bm-grey-light);
+  color: var(--bm-text-muted);
+}

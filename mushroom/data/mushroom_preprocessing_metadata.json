@@ -1,0 +1,56 @@
+{
+  "target_mapping": {
+    "e": 0,
+    "p": 1
+  },
+  "random_state": 42,
+  "test_size": 0.2,
+  "numerical_features": [
+    "cap-diameter",
+    "stem-height",
+    "stem-width"
+  ],
+  "categorical_features": [
+    "spore-print-color",
+    "gill-color",
+    "habitat",
+    "season",
+    "ring-type",
+    "cap-shape",
+    "stem-surface"
+  ],
+  "dropped_noise_columns": [
+    "jumbled_noise_0",
+    "jumbled_noise_1"
+  ],
+  "raw_feature_order": [
+    "cap-diameter",
+    "stem-height",
+    "stem-width",
+    "spore-print-color",
+    "gill-color",
+    "habitat",
+    "season",
+    "ring-type",
+    "cap-shape",
+    "stem-surface"
+  ],
+  "source_column_order": [
+    "cap-diameter",
+    "stem-height",
+    "stem-width",
+    "spore-print-color",
+    "gill-color",
+    "habitat",
+    "season",
+    "ring-type",
+    "cap-shape",
+    "stem-surface",
+    "jumbled_noise_0",
+    "jumbled_noise_1",
+    "class"
+  ],
+  "n_training_rows": 4000,
+  "n_test_rows": 1000,
+  "scikit_learn_version": "1.4.2"
+}

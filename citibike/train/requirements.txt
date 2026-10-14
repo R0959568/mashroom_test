@@ -1,0 +1,18 @@
+# Packages of the training script (train.py) inside the SageMaker scikit-learn container (10), which runs Python 3.9 and
+# installs this file from source_dir before it calls train.py. On the laptop the kernel has its own, newer versions
+# through the repo's requirements.txt; this file is not installed there.
+#
+# The container ships numpy 1.24.1, scipy 1.8.0, pandas 1.1.3, pyarrow 14.0.1 and scikit-learn 1.2.1, installed with
+# conda. Replacing a conda-installed compiled package with pip leaves its compiled files behind and the new version
+# loads them (10 §3, 10 October: four failed smoke jobs, `numpy.core.multiarray failed to import`, a TypeError inside
+# scipy, `_multiarray_umath failed to import` from pyarrow). So every compiled package the container has is pinned to
+# the version it has, and pip leaves it alone. Only what the script needs on top is added: scikit-learn 1.3 for the
+# TargetEncoder (replacing 1.2.1 worked) and lightgbm (a ctypes wrapper, no numpy build). The set was installed and
+# run for both families on a clean Python 3.9 on the laptop before it went into the bundle.
+numpy==1.24.1
+scipy==1.8.0
+pandas==1.1.3
+pyarrow==14.0.1
+scikit-learn==1.3.2
+lightgbm==4.5.0
+joblib>=1.1

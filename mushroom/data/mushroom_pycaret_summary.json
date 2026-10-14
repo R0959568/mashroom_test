@@ -1,0 +1,49 @@
+{
+  "dataset_rows": 4000,
+  "target_mapping": {
+    "e": 0,
+    "p": 1
+  },
+  "positive_class": 1,
+  "pycaret_version": "3.3.2",
+  "random_seed": 42,
+  "cross_validation": {
+    "strategy": "StratifiedKFold",
+    "folds": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+  "models_evaluated": [
+    "lr",
+    "dt",
+    "rf",
+    "et",
+    "gbc",
+    "ada",
+    "knn",
+    "rbfsvm",
+    "nb",
+    "lightgbm"
+  ],
+  "shortlisted_model_ids": [
+    "rf",
+    "lightgbm",
+    "et"
+  ],
+  "sorting_metric": "Poisonous Recall",
+  "internal_train_fraction": 0.8,
+  "setup": {
+    "numeric_imputation": "median",
+    "categorical_imputation": "__missing__",
+    "normalize": true,
+    "feature_selection": false,
+    "remove_outliers": false,
+    "fix_imbalance": false
+  },
+  "limitations": [
+    "PyCaret CV uses about 3,200 of the 4,000 supplied training rows; notebook 03 uses all 4,000.",
+    "PyCaret preprocessing differs from the shared sklearn baseline preprocessor.",
+    "Confusion matrices and ROC plots use PyCaret internal validation data, not CV OOF predictions or final test data.",
+    "No tuning, threshold optimization, automatic balancing, or production model saving was performed."
+  ]
+}

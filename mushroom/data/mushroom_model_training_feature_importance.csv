@@ -1,0 +1,135 @@
+Model,transformed_feature,importance,importance_type
+Random Forest,numeric__cap-diameter,0.10369510688518162,Random Forest impurity
+Random Forest,numeric__stem-height,0.15363660425004438,Random Forest impurity
+Random Forest,numeric__stem-width,0.17631576221131892,Random Forest impurity
+Random Forest,numeric_missing__missingindicator_cap-diameter,0.019536227892389006,Random Forest impurity
+Random Forest,numeric_missing__missingindicator_stem-height,0.01776264497471396,Random Forest impurity
+Random Forest,numeric_missing__missingindicator_stem-width,0.010018130144689257,Random Forest impurity
+Random Forest,categorical__spore-print-color___missing__,0.006996042830377357,Random Forest impurity
+Random Forest,categorical__spore-print-color_g,0.0005810612383948619,Random Forest impurity
+Random Forest,categorical__spore-print-color_k,0.0022950374637330517,Random Forest impurity
+Random Forest,categorical__spore-print-color_n,0.0065490412734475175,Random Forest impurity
+Random Forest,categorical__spore-print-color_p,0.0023554008739024865,Random Forest impurity
+Random Forest,categorical__spore-print-color_r,0.0001050564101661263,Random Forest impurity
+Random Forest,categorical__spore-print-color_u,0.00018381776605890058,Random Forest impurity
+Random Forest,categorical__spore-print-color_w,0.0018514600595016407,Random Forest impurity
+Random Forest,categorical__gill-color___missing__,0.015820217468817076,Random Forest impurity
+Random Forest,categorical__gill-color_b,0.00241600584643406,Random Forest impurity
+Random Forest,categorical__gill-color_e,0.004394513267695775,Random Forest impurity
+Random Forest,categorical__gill-color_f,0.006305313621943562,Random Forest impurity
+Random Forest,categorical__gill-color_g,0.010222970157612551,Random Forest impurity
+Random Forest,categorical__gill-color_k,0.004130869211297333,Random Forest impurity
+Random Forest,categorical__gill-color_n,0.013722018272509469,Random Forest impurity
+Random Forest,categorical__gill-color_o,0.006774355591850611,Random Forest impurity
+Random Forest,categorical__gill-color_p,0.011542315432868733,Random Forest impurity
+Random Forest,categorical__gill-color_r,0.004231950617408783,Random Forest impurity
+Random Forest,categorical__gill-color_u,0.00423005349026374,Random Forest impurity
+Random Forest,categorical__gill-color_w,0.018561865316761714,Random Forest impurity
+Random Forest,categorical__gill-color_y,0.01538340464139428,Random Forest impurity
+Random Forest,categorical__habitat___missing__,0.014875082770889793,Random Forest impurity
+Random Forest,categorical__habitat_d,0.02017131201019844,Random Forest impurity
+Random Forest,categorical__habitat_g,0.009438242529672732,Random Forest impurity
+Random Forest,categorical__habitat_h,0.00488050564686709,Random Forest impurity
+Random Forest,categorical__habitat_l,0.006446092916390221,Random Forest impurity
+Random Forest,categorical__habitat_m,0.00681448617625044,Random Forest impurity
+Random Forest,categorical__habitat_p,0.0012470791595190324,Random Forest impurity
+Random Forest,categorical__habitat_u,0.00023774587936119956,Random Forest impurity
+Random Forest,categorical__habitat_w,0.0011508753472397753,Random Forest impurity
+Random Forest,categorical__season___missing__,0.01518491025641434,Random Forest impurity
+Random Forest,categorical__season_a,0.0198077717535959,Random Forest impurity
+Random Forest,categorical__season_s,0.0061296754936819116,Random Forest impurity
+Random Forest,categorical__season_u,0.017537525015157675,Random Forest impurity
+Random Forest,categorical__season_w,0.011434135851266522,Random Forest impurity
+Random Forest,categorical__ring-type___missing__,0.010096792196723789,Random Forest impurity
+Random Forest,categorical__ring-type_e,0.006270694886775478,Random Forest impurity
+Random Forest,categorical__ring-type_f,0.01619354595485685,Random Forest impurity
+Random Forest,categorical__ring-type_g,0.0032081193538698503,Random Forest impurity
+Random Forest,categorical__ring-type_l,0.006008361104315232,Random Forest impurity
+Random Forest,categorical__ring-type_m,0.0010924703544233044,Random Forest impurity
+Random Forest,categorical__ring-type_p,0.003340734318594885,Random Forest impurity
+Random Forest,categorical__ring-type_r,0.00406532828939365,Random Forest impurity
+Random Forest,categorical__ring-type_z,0.016743255540059683,Random Forest impurity
+Random Forest,categorical__cap-shape___missing__,0.010570525387261264,Random Forest impurity
+Random Forest,categorical__cap-shape_b,0.015552112296597118,Random Forest impurity
+Random Forest,categorical__cap-shape_c,0.007579384554035255,Random Forest impurity
+Random Forest,categorical__cap-shape_f,0.0172008057368707,Random Forest impurity
+Random Forest,categorical__cap-shape_o,0.007528353300215109,Random Forest impurity
+Random Forest,categorical__cap-shape_p,0.006550020032665355,Random Forest impurity
+Random Forest,categorical__cap-shape_s,0.011317148768460142,Random Forest impurity
+Random Forest,categorical__cap-shape_x,0.019449525841592354,Random Forest impurity
+Random Forest,categorical__stem-surface___missing__,0.018693176784322457,Random Forest impurity
+Random Forest,categorical__stem-surface_f,0.004133233172423401,Random Forest impurity
+Random Forest,categorical__stem-surface_g,0.01435058125694096,Random Forest impurity
+Random Forest,categorical__stem-surface_h,0.00354011478432208,Random Forest impurity
+Random Forest,categorical__stem-surface_i,0.00871486420990371,Random Forest impurity
+Random Forest,categorical__stem-surface_k,0.0037731484250512625,Random Forest impurity
+Random Forest,categorical__stem-surface_s,0.012099222795491972,Random Forest impurity
+Random Forest,categorical__stem-surface_t,0.006849480476699971,Random Forest impurity
+Random Forest,categorical__stem-surface_y,0.01010631216085213,Random Forest impurity
+LightGBM,numeric__cap-diameter,874.0,LightGBM split count
+LightGBM,numeric__stem-height,1260.0,LightGBM split count
+LightGBM,numeric__stem-width,1514.0,LightGBM split count
+LightGBM,numeric_missing__missingindicator_cap-diameter,65.0,LightGBM split count
+LightGBM,numeric_missing__missingindicator_stem-height,42.0,LightGBM split count
+LightGBM,numeric_missing__missingindicator_stem-width,24.0,LightGBM split count
+LightGBM,categorical__spore-print-color___missing__,23.0,LightGBM split count
+LightGBM,categorical__spore-print-color_g,0.0,LightGBM split count
+LightGBM,categorical__spore-print-color_k,1.0,LightGBM split count
+LightGBM,categorical__spore-print-color_n,23.0,LightGBM split count
+LightGBM,categorical__spore-print-color_p,6.0,LightGBM split count
+LightGBM,categorical__spore-print-color_r,0.0,LightGBM split count
+LightGBM,categorical__spore-print-color_u,0.0,LightGBM split count
+LightGBM,categorical__spore-print-color_w,14.0,LightGBM split count
+LightGBM,categorical__gill-color___missing__,61.0,LightGBM split count
+LightGBM,categorical__gill-color_b,15.0,LightGBM split count
+LightGBM,categorical__gill-color_e,21.0,LightGBM split count
+LightGBM,categorical__gill-color_f,36.0,LightGBM split count
+LightGBM,categorical__gill-color_g,38.0,LightGBM split count
+LightGBM,categorical__gill-color_k,13.0,LightGBM split count
+LightGBM,categorical__gill-color_n,47.0,LightGBM split count
+LightGBM,categorical__gill-color_o,34.0,LightGBM split count
+LightGBM,categorical__gill-color_p,50.0,LightGBM split count
+LightGBM,categorical__gill-color_r,20.0,LightGBM split count
+LightGBM,categorical__gill-color_u,11.0,LightGBM split count
+LightGBM,categorical__gill-color_w,131.0,LightGBM split count
+LightGBM,categorical__gill-color_y,62.0,LightGBM split count
+LightGBM,categorical__habitat___missing__,39.0,LightGBM split count
+LightGBM,categorical__habitat_d,101.0,LightGBM split count
+LightGBM,categorical__habitat_g,32.0,LightGBM split count
+LightGBM,categorical__habitat_h,22.0,LightGBM split count
+LightGBM,categorical__habitat_l,30.0,LightGBM split count
+LightGBM,categorical__habitat_m,23.0,LightGBM split count
+LightGBM,categorical__habitat_p,0.0,LightGBM split count
+LightGBM,categorical__habitat_u,0.0,LightGBM split count
+LightGBM,categorical__habitat_w,24.0,LightGBM split count
+LightGBM,categorical__season___missing__,47.0,LightGBM split count
+LightGBM,categorical__season_a,163.0,LightGBM split count
+LightGBM,categorical__season_s,24.0,LightGBM split count
+LightGBM,categorical__season_u,62.0,LightGBM split count
+LightGBM,categorical__season_w,44.0,LightGBM split count
+LightGBM,categorical__ring-type___missing__,32.0,LightGBM split count
+LightGBM,categorical__ring-type_e,27.0,LightGBM split count
+LightGBM,categorical__ring-type_f,87.0,LightGBM split count
+LightGBM,categorical__ring-type_g,11.0,LightGBM split count
+LightGBM,categorical__ring-type_l,34.0,LightGBM split count
+LightGBM,categorical__ring-type_m,0.0,LightGBM split count
+LightGBM,categorical__ring-type_p,9.0,LightGBM split count
+LightGBM,categorical__ring-type_r,12.0,LightGBM split count
+LightGBM,categorical__ring-type_z,57.0,LightGBM split count
+LightGBM,categorical__cap-shape___missing__,19.0,LightGBM split count
+LightGBM,categorical__cap-shape_b,46.0,LightGBM split count
+LightGBM,categorical__cap-shape_c,47.0,LightGBM split count
+LightGBM,categorical__cap-shape_f,68.0,LightGBM split count
+LightGBM,categorical__cap-shape_o,48.0,LightGBM split count
+LightGBM,categorical__cap-shape_p,19.0,LightGBM split count
+LightGBM,categorical__cap-shape_s,43.0,LightGBM split count
+LightGBM,categorical__cap-shape_x,119.0,LightGBM split count
+LightGBM,categorical__stem-surface___missing__,117.0,LightGBM split count
+LightGBM,categorical__stem-surface_f,0.0,LightGBM split count
+LightGBM,categorical__stem-surface_g,39.0,LightGBM split count
+LightGBM,categorical__stem-surface_h,7.0,LightGBM split count
+LightGBM,categorical__stem-surface_i,32.0,LightGBM split count
+LightGBM,categorical__stem-surface_k,21.0,LightGBM split count
+LightGBM,categorical__stem-surface_s,52.0,LightGBM split count
+LightGBM,categorical__stem-surface_t,25.0,LightGBM split count
+LightGBM,categorical__stem-surface_y,33.0,LightGBM split count

@@ -1,0 +1,74 @@
+# The two nginx blocks of the project subdomain, as they sit in the host's nginx.conf since 10 Oct 2026 (the host's
+# nginx is a swarm service with ONE config file, /root/henskens-app/nginx.conf, bind-mounted into the container
+# together with /etc/letsencrypt and the certbot webroot, both read-only).
+#
+# The backend container joins the nginx overlay network as "citibike-backend" (docker-compose.yml, PROXY_NETWORK), so
+# nginx reaches it by name and port 8081 on the host stays loopback-only. Order on the host:
+#   1. docker compose up -d
+#   2. the port-80 block (below the other server blocks), nginx -t and nginx -s reload inside the nginx container
+#   3. certbot certonly --webroot -w /var/www/certbot -d deep-learning.henskens-tech.be --non-interactive --agree-tos
+#   4. the port-443 block, nginx -t, nginx -s reload
+# Two things that are easy to get wrong:
+#   - edit nginx.conf IN PLACE (python open(..., "r+"), or cat >): the file is bind-mounted, so a tool that writes a new
+#     file and renames it (sed -i, most editors) leaves the container looking at the old inode;
+#   - the backend is addressed through a variable + resolver, not an upstream {} block: with an upstream block nginx
+#     refuses to start or reload while the citibike stack is down, and this nginx also serves the main site.
+# Renewal is the host's certbot timer; the 80 block keeps /.well-known/acme-challenge/ served from the webroot.
+# Note: that timer has no deploy hook that reloads nginx, so a renewed certificate is served after the next reload.
+
+# ============================================================================
+# deep-learning.henskens-tech.be: the Citi Bike forecast of the CloudAI course
+# (repo cloud-ai-avenue-5, citibike/deploy). The backend container joins this
+# stack's overlay network as "citibike-backend" (its compose file, PROXY_NETWORK)
+# and serves the SPA and /api on one port; nothing of it is published on the host.
+# ============================================================================
+server {
+    listen 80;
+    server_name deep-learning.henskens-tech.be;
+
+    # Must stay ABOVE the catch-all, otherwise certbot renewal breaks.
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://deep-learning.henskens-tech.be$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    server_name deep-learning.henskens-tech.be;
+
+    ssl_certificate /etc/letsencrypt/live/deep-learning.henskens-tech.be/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/deep-learning.henskens-tech.be/privkey.pem;
+
+    # Same rule as the primary domain: no add_header inside a location, or these are dropped there.
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options DENY always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    # The $cache_control map at the top: the SPA's index.html is never cached (a new image
+    # shows at once), its hashed /assets/ a day, /api/ carries no Cache-Control from nginx.
+    add_header Cache-Control $cache_control always;
+
+    # One location: the backend serves the SPA and /api on one port. The name is resolved at
+    # request time (resolver + variable) and NOT at config load: an upstream {} block would
+    # make this nginx refuse to start or reload whenever the citibike stack is down, which
+    # would take the main site with it. Down means a 502 on this subdomain only.
+    # The forecast's first call after a quiet period takes up to 15 s (a serverless SageMaker
+    # endpoint waking up), hence the read timeout.
+    location / {
+        resolver 127.0.0.11 valid=10s;
+        set $citibike_backend http://citibike-backend:8080;
+        proxy_pass $citibike_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 90s;
+        proxy_connect_timeout 10s;
+    }
+}
+

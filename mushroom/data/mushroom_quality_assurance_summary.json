@@ -1,0 +1,216 @@
+{
+  "audit_timestamp_utc": "2026-10-14T12:32:35.548617+00:00",
+  "project_verification": {
+    "training_rows": 4000,
+    "test_rows": 1000,
+    "feature_count": 10,
+    "target_mapping": {
+      "0": "edible",
+      "1": "poisonous"
+    },
+    "saved_source_indexes_disjoint": true,
+    "test_partition_paths_referenced_by_tuning_notebook": []
+  },
+  "pycaret_scoring": {
+    "saved_run_version": "3.3.2",
+    "installed_package_version": null,
+    "captured_notebook_scoring_errors": [],
+    "comparison_completed_in_saved_execution": true,
+    "corrected_full_experiment_rerun": false,
+    "rerun_blocker": "PyCaret only supports Python 3.9, 3.10, and 3.11; the active interpreter is Python 3.12.3.",
+    "sample_weight_supplied_to_original_comparison": false,
+    "saved_unweighted_comparison_effect": "The setup and compare calls do not supply sample_weight, so forwarding the optional weight does not change those saved scores.",
+    "affected_custom_metrics": [
+      "poisonous_recall",
+      "balanced_accuracy_explicit"
+    ],
+    "issue_found": "Custom functions accepted **kwargs but ignored sample_weight; custom scores were unweighted if weights were passed.",
+    "built_in_precision_f1_auc_replaced": false,
+    "synthetic_metric_checks": {
+      "poisonous_recall_unweighted": 0.6666666666666666,
+      "poisonous_recall_weighted": 0.8333333333333334,
+      "balanced_accuracy_unweighted": 0.3333333333333333,
+      "balanced_accuracy_weighted": 0.4166666666666667,
+      "poisonous_precision_unweighted": 0.6666666666666666,
+      "poisonous_f1_unweighted": 0.6666666666666666
+    },
+    "saved_top_pycaret_rows_by_poisonous_recall": [
+      {
+        "Model": "Decision Tree Classifier",
+        "Poisonous Recall": 0.6144,
+        "Balanced Accuracy": 0.6943,
+        "F1": 0.6187,
+        "AUC": 0.6943
+      },
+      {
+        "Model": "Light Gradient Boosting Machine",
+        "Poisonous Recall": 0.5715,
+        "Balanced Accuracy": 0.7314,
+        "F1": 0.6528,
+        "AUC": 0.7968
+      },
+      {
+        "Model": "Random Forest Classifier",
+        "Poisonous Recall": 0.5607,
+        "Balanced Accuracy": 0.7361,
+        "F1": 0.6566,
+        "AUC": 0.8112
+      },
+      {
+        "Model": "Extra Trees Classifier",
+        "Poisonous Recall": 0.5582,
+        "Balanced Accuracy": 0.7045,
+        "F1": 0.6178,
+        "AUC": 0.7774
+      },
+      {
+        "Model": "K Neighbors Classifier",
+        "Poisonous Recall": 0.5186,
+        "Balanced Accuracy": 0.6957,
+        "F1": 0.5994,
+        "AUC": 0.7436
+      }
+    ]
+  },
+  "feature_overlap": {
+    "matching_train_test_row_pairs": 1,
+    "unique_test_rows": 1,
+    "unique_train_rows": 1,
+    "percent_of_test_rows": 0.1,
+    "overlapping_edible_test_rows": 0,
+    "overlapping_poisonous_test_rows": 1,
+    "target_labels_agree": true,
+    "train_rows_in_within_partition_duplicate_patterns": 7,
+    "test_rows_in_within_partition_duplicate_patterns": 0,
+    "repeated_model_feature_patterns_in_full_saved_split": 4,
+    "rows_in_repeated_model_feature_patterns_in_full_saved_split": 9,
+    "pairs": [
+      {
+        "train_position": 3,
+        "test_position": 58,
+        "train_source_index": 580,
+        "test_source_index": 4082,
+        "train_label": 1,
+        "test_label": 1,
+        "poisonous_probability": 0.9779904364104637,
+        "predicted_label": 1,
+        "correctly_classified": true
+      }
+    ],
+    "original_source_csv": {
+      "available": true,
+      "path": "~/Downloads/mushroom_project_dataset.csv",
+      "full_record_duplicate_rows": 0,
+      "model_feature_duplicate_groups": 4,
+      "model_feature_duplicate_rows": 9,
+      "cross_split_source_rows_equal_including_noise_and_target": false,
+      "cross_split_noise_differences": {
+        "jumbled_noise_0": [
+          "f",
+          "o"
+        ]
+      },
+      "repeated_model_feature_patterns": [
+        {
+          "row_count": 3,
+          "labels": [
+            1
+          ],
+          "source_indices": [
+            232,
+            3164,
+            4244
+          ]
+        },
+        {
+          "row_count": 2,
+          "labels": [
+            0
+          ],
+          "source_indices": [
+            316,
+            3608
+          ]
+        },
+        {
+          "row_count": 2,
+          "labels": [
+            1
+          ],
+          "source_indices": [
+            580,
+            4082
+          ]
+        },
+        {
+          "row_count": 2,
+          "labels": [
+            0
+          ],
+          "source_indices": [
+            1770,
+            3851
+          ]
+        }
+      ]
+    }
+  },
+  "final_candidate_integrity": {
+    "selected_model": "Random Forest",
+    "class_weight": {
+      "0": 1,
+      "1": 3
+    },
+    "threshold": 0.5,
+    "target_mapping": {
+      "0": "edible",
+      "1": "poisonous"
+    },
+    "model_sha256_matches_pre_audit": true,
+    "final_metrics_sha256_matches_pre_audit": true,
+    "final_test_metrics": {
+      "accuracy": 0.684,
+      "balanced_accuracy": 0.7198662468824222,
+      "poisonous_recall": 0.8680738786279684,
+      "poisonous_precision": 0.5529411764705883,
+      "poisonous_f1": 0.675564681724846,
+      "roc_auc": 0.8356638157028199,
+      "average_precision": 0.7847477426385546,
+      "false_negatives": 50,
+      "false_negative_rate": 0.13192612137203166,
+      "false_positives": 266,
+      "false_positive_rate": 0.428341384863124,
+      "true_positives": 329,
+      "true_negatives": 355
+    }
+  },
+  "audit_runtime": {
+    "python": "3.12.3",
+    "pandas": "3.0.6",
+    "saved_final_evaluation_pandas": "3.0.6"
+  },
+  "conclusions": [
+    "No PyCaret scoring exception was present in the saved notebook execution; the comparison completed.",
+    "The custom recall and balanced-accuracy scorers now explicitly accept and forward sample_weight.",
+    "The single exact modeled-feature train/test pair has distinct source indexes and matching poisonous labels.",
+    "The source CSV shows the pair differs in an excluded synthetic noise feature; full source records are not duplicates.",
+    "One held-out row (0.1% of test) is a repeated feature pattern, not evidence that one source record crossed the split.",
+    "Reapplying the unchanged Random Forest predicts the overlapping poisonous test row as poisonous; this diagnostic was not used for tuning.",
+    "The final model artifact and final test-metrics JSON hashes match the pre-audit versions.",
+    "A fresh full PyCaret experiment run remains unverified under Python 3.12.",
+    "The final test results remain a single held-out estimate and do not establish real-world mushroom safety."
+  ],
+  "limitations": [
+    "No PyCaret scoring exception was captured in the saved notebook outputs, so an exact historical exception cause cannot be established.",
+    "The corrected weighted scorer behavior is covered by synthetic checks but the full PyCaret comparison was not rerun in this interpreter.",
+    "Per-observation final test predictions were not saved; overlap correctness was recomputed using the unchanged serialized model.",
+    "The active audit environment has pandas 2.1.4, while the saved final evaluation records pandas 3.0.6; interpret the diagnostic probability as environment-specific.",
+    "The local source CSV path is user-specific; source row indexes and duplicate feature patterns are also present in saved Parquet partitions."
+  ],
+  "software_versions": {
+    "python": "3.12.3",
+    "scikit_learn": "1.4.2",
+    "pandas": "3.0.6",
+    "pycaret_saved_run": "3.3.2"
+  }
+}

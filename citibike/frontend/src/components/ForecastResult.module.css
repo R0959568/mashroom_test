@@ -1,0 +1,112 @@
+.note {
+  margin: 0 0 var(--space-3);
+  color: var(--bm-text-muted);
+}
+
+.horizons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.horizon {
+  padding: var(--space-3);
+  border: 1px solid var(--bm-border);
+  border-radius: var(--radius);
+}
+
+.horizonTitle {
+  font-weight: 600;
+}
+
+.horizonSub {
+  color: var(--bm-text-muted);
+  font-size: 13px;
+  min-height: 2.6em;
+}
+
+.big {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  color: var(--bm-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.actual {
+  margin-bottom: var(--space-1);
+}
+
+.muted {
+  color: var(--bm-text-muted);
+  font-size: 13px;
+}
+
+.numHead {
+  text-align: right;
+}
+
+/* The skeleton: shimmering blocks in the shape of the result; still, not animated, for reduced motion. */
+.bone {
+  height: 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--bm-grey-light) 25%, var(--bm-bg) 50%, var(--bm-grey-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.boneSub {
+  width: 60%;
+  margin: var(--space-1) 0 calc(2.6em - 14px);
+}
+
+.boneBig {
+  width: 120px;
+  height: 44px;
+  margin-top: var(--space-2);
+}
+
+.boneLine {
+  width: 55%;
+  margin-bottom: var(--space-2);
+}
+
+.boneLineShort {
+  width: 80%;
+  height: 12px;
+}
+
+.boneCell {
+  width: 65%;
+}
+
+.boneCellShort {
+  width: 45%;
+}
+
+.boneNum {
+  width: 56px;
+  margin-left: auto;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bone {
+    animation: none;
+  }
+}

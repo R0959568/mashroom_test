@@ -1,0 +1,66 @@
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, var(--bm-grey) 0%, var(--bm-grey-dark) 100%);
+  color: #fff;
+  padding: var(--space-4) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: sticky; /* the robot stays in view while the page scrolls */
+  top: 0;
+  height: 100vh;
+  overflow: hidden; /* the robot's arms may hang below its box, never out of the sidebar */
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.brandTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brandSub {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid transparent;
+  border-radius: var(--radius);
+  opacity: 0.85;
+}
+
+.navLink:hover {
+  opacity: 1;
+  background: rgb(255 255 255 / 8%);
+}
+
+.navLinkActive {
+  border-left-color: var(--bm-red);
+  opacity: 1;
+  background: rgb(255 255 255 / 12%);
+}
+
+.content {
+  padding: var(--space-4);
+  max-width: 1400px;
+  width: 100%;
+}

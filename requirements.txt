@@ -1,0 +1,38 @@
+# Python packages for the notebooks and scripts in this repo.
+# Install once per environment, from the repo root:   pip install -r requirements.txt
+# or from a notebook:                                  %pip install -r ../../requirements.txt
+# Add a package here (not only in a notebook cell) as soon as a notebook starts using it.
+
+# Database access (Postgres on the project server, via NetBird)
+sqlalchemy>=2.0
+pg8000>=1.31                # pure-Python Postgres driver, used by citibike/connection.py
+python-dotenv>=1.0          # reads CITIBIKE_DB_USER / CITIBIKE_DB_PASSWORD from a local, git-ignored .env
+dotenv>=0.9.9
+
+# Data handling, charts and statistics
+pandas>=2.2
+matplotlib>=3.8
+pyarrow>=17
+matplotlib>=3.8
+scipy>=1.11
+scikit-learn>=1.2          # 05 baseline model (ridge)
+joblib>=1.2                 # 05 saves the fitted pipelines (imported directly, so listed explicitly)
+lightgbm>=4.0               # 07 - 10: LightGBM for the day horizon (citibike/train/train.py). 4.7.0 runs on this kernel
+                            # (scikit-learn 1.9); the <4.6 pin in requirements_oldpy.txt is for scikit-learn 1.4 only
+
+# citibike/notebooks/10_PH_aws_model.ipynb and citibike/train/jobs.py: SageMaker training and tuning jobs through the
+# plain AWS API (the SageMaker Python SDK v3 would pull in torch and mlflow)
+boto3>=1.34
+
+# citibike/citibike_data.py (download and assemble the raw files)
+requests>=2.32
+tqdm>=4.66                  # optional progress bars
+truststore>=0.9             # the OS certificate store behind the laptop's TLS-inspecting proxy (downloads, and 10: boto3 to S3)
+
+# citibike/ingest/export_holidays.py (calendar load; same pin as citibike/ingest/requirements.txt)
+holidays==0.105
+
+# Notebooks and tests
+ipykernel>=6.29
+pytest>=8.0
+

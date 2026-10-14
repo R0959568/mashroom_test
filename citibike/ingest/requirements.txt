@@ -1,0 +1,7 @@
+# Runtime dependencies of citibike_data.py + ingest/convert_zip.py + ingest/export_holidays.py inside the backend image.
+pandas>=2.2
+pyarrow>=17
+requests>=2.32
+# Pinned: the package computes holidays from rules in its code, so a new version can change the data.
+# citibike.holiday records the version of every row; bump on purpose and reload the calendar.
+holidays==0.105

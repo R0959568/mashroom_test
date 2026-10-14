@@ -1,0 +1,17 @@
+# Build context for deploy/Dockerfile is this folder. Keep local build output and data out of the image:
+# a copied obj/ from a Windows build overwrites the container's restore and breaks dotnet publish.
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/.vs/
+**/*.user
+**/__pycache__/
+**/.pytest_cache/
+notebooks/
+tests/
+deploy/.env*
+deploy/postgres/
+deploy/nginx/
+deploy/cron/
+*.md

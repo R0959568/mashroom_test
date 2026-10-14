@@ -1,0 +1,36 @@
+/* The robot's box at the bottom of the sidebar: a square-ish stage, the arms may hang into the overhang below it. */
+.wrap {
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  pointer-events: none;
+}
+
+/* A soft red glow behind the robot, so its edges catch the brand colour against the grey of the sidebar. */
+.glow {
+  position: absolute;
+  inset: 10% 0 -10% 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(210 12 20 / 35%), rgb(210 12 20 / 0%));
+  filter: blur(6px);
+}
+
+/* The scene layer the canvas fills; the stage reads --scene-overhang from it (inherited by the host). */
+.scene {
+  --scene-overhang: 0.12;
+  position: absolute;
+  inset: 0 0 calc(var(--scene-overhang) * -100%) 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.sceneReady {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene {
+    transition: none;
+  }
+}

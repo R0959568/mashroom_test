@@ -1,0 +1,32 @@
+# Python packages for the PyCaret notebooks (06, and 07 - 08 if they tune a PyCaret model). PyCaret 3.3.2 needs
+# Python 3.9 - 3.11 and pins pandas < 2.2, numpy < 1.27, so it gets its own environment:
+#   C:\Python311\python.exe -m venv .venv-pycaret
+#   .venv-pycaret\Scripts\python.exe -m pip install -r requirements_oldpy.txt
+#   .venv-pycaret\Scripts\python.exe -m ipykernel install --user --name pycaret311 --display-name "Python 3.11 (pycaret)"
+# Then pick the kernel "Python 3.11 (pycaret)" in the notebook. The other notebooks use requirements.txt.
+# Add a package here (not only in a notebook cell) as soon as a notebook starts using it.
+
+# Database access (Postgres on the project server, via NetBird)
+sqlalchemy>=2.0
+pg8000>=1.31                # pure-Python Postgres driver, used by citibike/connection.py
+python-dotenv>=1.0          # reads CITIBIKE_DB_USER / CITIBIKE_DB_PASSWORD from a local, git-ignored .env
+dotenv>=0.9.9
+
+# Data handling
+pandas>=2.0.0,<2.2.0
+pyarrow>=17
+
+# citibike/citibike_data.py (download and assemble the raw files)
+requests>=2.32
+tqdm>=4.66                  # optional progress bars
+truststore>=0.9             # optional: use the OS certificate store behind a TLS-inspecting proxy
+
+# Notebooks and tests
+ipykernel>=6.29
+pytest>=8.0
+
+# AutoML comparison (06)
+pycaret>=3.3.2
+lightgbm>=4.0,<4.6          # 4.7.0 crashes on Windows (access violation) once scikit-learn 1.4 is imported before it; 4.5.0 is fine
+xgboost>=2.0                # not a PyCaret dependency; needed for the xgboost row of compare_models and for 10 (SageMaker XGBoost)
+

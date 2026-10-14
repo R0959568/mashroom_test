@@ -1,0 +1,218 @@
+{
+  "dataset": {
+    "training_rows": 4000,
+    "feature_count": 10,
+    "target": "class",
+    "target_mapping": {
+      "0": "edible",
+      "1": "poisonous"
+    },
+    "class_counts": {
+      "0": 2486,
+      "1": 1514
+    }
+  },
+  "cross_validation": {
+    "strategy": "StratifiedKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "same_fold_indices_for_all_models": true,
+    "preprocessing": "shared build_preprocessor in each sklearn Pipeline; fitted within each training fold"
+  },
+  "models": {
+    "Random Forest": {
+      "cross_validation": {
+        "accuracy": {
+          "mean": 0.7847500000000001,
+          "std": 0.014668205411705965
+        },
+        "balanced_accuracy": {
+          "mean": 0.7444558437098189,
+          "std": 0.017876676108196217
+        },
+        "poisonous_precision": {
+          "mean": 0.7970794515766952,
+          "std": 0.020808369408547762
+        },
+        "poisonous_recall": {
+          "mean": 0.5786177955543899,
+          "std": 0.03375976016526082
+        },
+        "poisonous_f1": {
+          "mean": 0.6701617743261645,
+          "std": 0.026814456157055258
+        },
+        "roc_auc": {
+          "mean": 0.8303820642484986,
+          "std": 0.015827151173204556
+        }
+      },
+      "out_of_fold": {
+        "false_negatives": 624,
+        "false_negative_rate": 0.41215323645970936,
+        "false_positives": 229,
+        "recall": 0.5878467635402906,
+        "roc_auc": 0.8295268563400219
+      },
+      "cv_fit_and_prediction_seconds": 7.239729458000511,
+      "candidate_pipeline": "random_forest_candidate.joblib"
+    },
+    "LightGBM": {
+      "cross_validation": {
+        "accuracy": {
+          "mean": 0.77675,
+          "std": 0.012611998255629428
+        },
+        "balanced_accuracy": {
+          "mean": 0.7436910825132323,
+          "std": 0.014401541703760214
+        },
+        "poisonous_precision": {
+          "mean": 0.7549771998202799,
+          "std": 0.021271665120503228
+        },
+        "poisonous_recall": {
+          "mean": 0.6076628854938473,
+          "std": 0.026520825082855543
+        },
+        "poisonous_f1": {
+          "mean": 0.6731049945921559,
+          "std": 0.0203472798342215
+        },
+        "roc_auc": {
+          "mean": 0.812856888554433,
+          "std": 0.013988329598310105
+        }
+      },
+      "out_of_fold": {
+        "false_negatives": 594,
+        "false_negative_rate": 0.39233817701453105,
+        "false_positives": 299,
+        "recall": 0.607661822985469,
+        "roc_auc": 0.8123472954489661
+      },
+      "cv_fit_and_prediction_seconds": 2.086214124923572,
+      "candidate_pipeline": "lightgbm_candidate.joblib"
+    },
+    "Decision Tree": {
+      "cross_validation": {
+        "accuracy": {
+          "mean": 0.705,
+          "std": 0.010116508785149164
+        },
+        "balanced_accuracy": {
+          "mean": 0.6838971553332562,
+          "std": 0.011129798869993336
+        },
+        "poisonous_precision": {
+          "mean": 0.6133919215786421,
+          "std": 0.014006304233292728
+        },
+        "poisonous_recall": {
+          "mean": 0.5970865298450374,
+          "std": 0.02065150361251428
+        },
+        "poisonous_f1": {
+          "mean": 0.6050051564646235,
+          "std": 0.014833026789222657
+        },
+        "roc_auc": {
+          "mean": 0.6838971553332562,
+          "std": 0.011129798869993345
+        }
+      },
+      "out_of_fold": {
+        "false_negatives": 610,
+        "false_negative_rate": 0.40290620871862615,
+        "false_positives": 570,
+        "recall": 0.5970937912813739,
+        "roc_auc": 0.6839049004677183
+      },
+      "cv_fit_and_prediction_seconds": 0.5351637500571087,
+      "candidate_pipeline": "decision_tree_candidate.joblib"
+    }
+  },
+  "overfitting_check": [
+    {
+      "Model": "Random Forest",
+      "Metric": "balanced_accuracy",
+      "training_mean": 1.0,
+      "validation_mean": 0.7444558437098189,
+      "train_minus_validation": 0.2555441562901811
+    },
+    {
+      "Model": "Random Forest",
+      "Metric": "poisonous_recall",
+      "training_mean": 1.0,
+      "validation_mean": 0.5786177955543899,
+      "train_minus_validation": 0.42138220444561014
+    },
+    {
+      "Model": "Random Forest",
+      "Metric": "roc_auc",
+      "training_mean": 1.0,
+      "validation_mean": 0.8303820642484986,
+      "train_minus_validation": 0.16961793575150141
+    },
+    {
+      "Model": "LightGBM",
+      "Metric": "balanced_accuracy",
+      "training_mean": 0.9427479225445122,
+      "validation_mean": 0.7436910825132323,
+      "train_minus_validation": 0.19905684003127988
+    },
+    {
+      "Model": "LightGBM",
+      "Metric": "poisonous_recall",
+      "training_mean": 0.899273028045992,
+      "validation_mean": 0.6076628854938473,
+      "train_minus_validation": 0.2916101425521447
+    },
+    {
+      "Model": "LightGBM",
+      "Metric": "roc_auc",
+      "training_mean": 0.9942674861053262,
+      "validation_mean": 0.812856888554433,
+      "train_minus_validation": 0.18141059755089317
+    },
+    {
+      "Model": "Decision Tree",
+      "Metric": "balanced_accuracy",
+      "training_mean": 1.0,
+      "validation_mean": 0.6838971553332562,
+      "train_minus_validation": 0.31610284466674377
+    },
+    {
+      "Model": "Decision Tree",
+      "Metric": "poisonous_recall",
+      "training_mean": 1.0,
+      "validation_mean": 0.5970865298450374,
+      "train_minus_validation": 0.4029134701549626
+    },
+    {
+      "Model": "Decision Tree",
+      "Metric": "roc_auc",
+      "training_mean": 1.0,
+      "validation_mean": 0.6838971553332562,
+      "train_minus_validation": 0.31610284466674377
+    }
+  ],
+  "baseline_comparison": {
+    "baseline": "Logistic Regression, notebook 03",
+    "controlled_data_and_cv": true,
+    "remaining_note": "Shared preprocessing and seeded 5-fold CV; minor package-version differences may affect scores."
+  },
+  "feature_importance": {
+    "tree_importance": "Model-specific impurity importance for Random Forest and split counts for LightGBM; not causal.",
+    "grouped_permutation": "Original input columns permuted within held-out folds; balanced accuracy drop; not causal."
+  },
+  "limitations": [
+    "Cross-validation uses only training data; no final test evaluation occurs in this notebook.",
+    "Models are untuned candidates and no thresholds or class-balancing methods were changed.",
+    "These educational results do not establish real-world mushroom safety."
+  ],
+  "highest_mean_poisonous_recall": "LightGBM",
+  "best_mean_roc_auc": "Random Forest",
+  "fewest_oof_false_negatives": "LightGBM"
+}

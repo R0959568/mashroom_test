@@ -1,0 +1,11 @@
+# Optional override for laptops behind a TLS-inspecting proxy: the container must trust the proxy's CA
+# or every HTTPS call to the bucket fails with UntrustedRoot. Not needed on the server.
+#
+#   LOCAL_CA_BUNDLE=C:/…/data/certs/ca-bundle.pem   (system bundle + proxy CA chain, see deploy/README.md)
+#   docker compose --env-file .env.local -f docker-compose.yml -f docker-compose.local.yml up -d
+services:
+  backend:
+    environment:
+      SSL_CERT_FILE: /certs/ca-bundle.pem     # honoured by .NET (OpenSSL) and by Python's ssl module
+    volumes:
+      - ${LOCAL_CA_BUNDLE}:/certs/ca-bundle.pem:ro

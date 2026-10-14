@@ -1,0 +1,44 @@
+/* The only place with raw colour and size values. Components consume these tokens via var(--...). */
+:root {
+  /* brand */
+  --bm-red: #d20c14;
+  --bm-grey: #53585f;
+  --bm-grey-dark: #3d4147;
+  --bm-grey-light: #e8e9eb;
+  --bm-bg: #f5f5f6;
+  --bm-text: #2a2c30;
+  --bm-text-muted: #6b7078;
+  --bm-border: #d9dbdf;
+  --bm-surface: #ffffff;
+
+  /* the station map (components/StationMap.tsx reads these at mount): few -> many departures, then the rest */
+  --map-scale-1: #f5c518;
+  --map-scale-2: #f28c28;
+  --map-scale-3: var(--bm-red);
+  --map-scale-4: #6e0a14;
+  --map-cold: #9a9ea5;
+  --map-outline: #ffffff;
+  --map-selected: var(--bm-text);
+
+  /* semantic */
+  --ok: #2c8a3d;
+  --ok-bg: #e6f4e8;
+  --warn: #d6a020;
+  --warn-bg: #fbf3dc;
+  --error: var(--bm-red);
+  --error-bg: #fbe4e5;
+  --info: #2f6fb3;
+  --info-bg: #e4eef8;
+
+  /* typography */
+  --font-ui: Calibri, "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* spacing / shape */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --radius: 6px;
+  --shadow: 0 1px 2px rgb(0 0 0 / 6%);
+}

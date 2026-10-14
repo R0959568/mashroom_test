@@ -1,0 +1,15 @@
+.row {
+  cursor: pointer;
+}
+
+.selected {
+  background: var(--info-bg);
+}
+
+.right {
+  text-align: right;
+}
+
+.muted {
+  color: var(--bm-text-muted);
+}

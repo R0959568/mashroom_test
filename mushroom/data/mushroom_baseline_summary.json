@@ -1,0 +1,101 @@
+{
+  "models_evaluated": [
+    "Dummy \u2014 Most Frequent",
+    "Dummy \u2014 Stratified",
+    "Logistic Regression"
+  ],
+  "cross_validation": {
+    "strategy": "StratifiedKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+  "target": "class",
+  "target_mapping": {
+    "e": 0,
+    "p": 1
+  },
+  "positive_class": 1,
+  "n_training_rows": 4000,
+  "n_training_features": 10,
+  "metrics": {
+    "Dummy \u2014 Most Frequent": {
+      "accuracy": {
+        "mean": 0.6214999999999999,
+        "std": 0.0005590169943749852
+      },
+      "balanced_accuracy": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "poisonous_precision": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "poisonous_recall": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "poisonous_f1": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "roc_auc": {
+        "mean": 0.5,
+        "std": 0.0
+      }
+    },
+    "Dummy \u2014 Stratified": {
+      "accuracy": {
+        "mean": 0.5325,
+        "std": 0.009601432184835751
+      },
+      "balanced_accuracy": {
+        "mean": 0.502902535710675,
+        "std": 0.010245112606169633
+      },
+      "poisonous_precision": {
+        "mean": 0.38211920529801324,
+        "std": 0.012952057758680748
+      },
+      "poisonous_recall": {
+        "mean": 0.381105064148799,
+        "std": 0.012730461880840063
+      },
+      "poisonous_f1": {
+        "mean": 0.38161129659022497,
+        "std": 0.012838410084532759
+      },
+      "roc_auc": {
+        "mean": 0.502902535710675,
+        "std": 0.010245112606169652
+      }
+    },
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.696,
+        "std": 0.012099845040330032
+      },
+      "balanced_accuracy": {
+        "mean": 0.6278509496435741,
+        "std": 0.014443303409097682
+      },
+      "poisonous_precision": {
+        "mean": 0.6990754640025612,
+        "std": 0.038814590737908564
+      },
+      "poisonous_recall": {
+        "mean": 0.34741765567285204,
+        "std": 0.03236720628398676
+      },
+      "poisonous_f1": {
+        "mean": 0.4632694976562771,
+        "std": 0.029337049464536295
+      },
+      "roc_auc": {
+        "mean": 0.6881992569690855,
+        "std": 0.02163439791892139
+      }
+    }
+  }
+}

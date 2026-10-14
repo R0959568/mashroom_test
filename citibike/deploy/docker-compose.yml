@@ -1,0 +1,97 @@
+# Avenue 5 data platform: Citi Bike + Mushroom apps and Postgres.
+# Separate compose project from the other apps on the host; own network, own volume.
+#
+#   cp .env.example .env && edit          # never commit .env
+#   docker compose up -d --build
+#   docker compose logs -f backend
+
+name: citibike
+
+services:
+  postgres:
+    image: pgduckdb/pgduckdb:17-v0.3.1
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-citibike}
+      INGEST_DB_USER: ${INGEST_DB_USER}
+      INGEST_DB_PASSWORD: ${INGEST_DB_PASSWORD}
+    # Bound to the NetBird VPN IP only. Never 0.0.0.0 - the port must not be reachable from the internet.
+    # The host needs net.ipv4.ip_nonlocal_bind=1 so the bind survives a reboot (VPN up after Docker).
+    ports:
+      - "${NETBIRD_IP}:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ${DATA_DIR}:/data/citibike:ro
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    # An explicit alias: the backend also sits on the proxy network, where the name "postgres" would resolve to
+    # another stack's database; the connection string below uses this alias and nothing else.
+    networks:
+      internal:
+        aliases: [citibike-postgres]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB:-citibike}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: citibike/deploy/Dockerfile
+    image: citibike-ingest:${IMAGE_TAG:-dev}
+    restart: unless-stopped
+    # The host has 2 vCPU / 3.7 GB RAM and no swap, shared with other apps. A conversion uses ~1.6 cores
+    # and ~600 MB when unrestricted; cap it so the converter is what gets throttled or OOM-killed, not a
+    # neighbour. A killed conversion fails only that file; the next run retries it.
+    cpus: "1.0"
+    mem_limit: 1200m
+    memswap_limit: 1200m
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mushroom-model:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__Postgres: "Host=citibike-postgres;Port=5432;Database=${POSTGRES_DB:-citibike};Username=${INGEST_DB_USER};Password=${INGEST_DB_PASSWORD}"
+      Ingest__AdminToken: ${INGEST_ADMIN_TOKEN}
+      Ingest__Regions: ${INGEST_REGIONS:-nyc}
+      Ingest__MinYear: ${INGEST_MIN_YEAR:-2021}
+      # The forecast API of notebook 11 (API Gateway in front of the SageMaker endpoints); empty = /api/forecast answers 503.
+      Forecast__Url: ${FORECAST_API_URL:-}
+      Forecast__ApiKey: ${FORECAST_API_KEY:-}
+      Mushroom__Url: http://mushroom-model:8000/
+    # Loopback only: the cron script calls it here. The subdomain is served by the host's nginx (a swarm service on the
+    # henskens-app overlay network), which reaches this container by its alias on that network, see deploy/nginx/.
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8081}:8080"
+    volumes:
+      - ${DATA_DIR}:/data/citibike
+    networks:
+      internal:
+      proxy:
+        aliases: [citibike-backend]
+
+  mushroom-model:
+    build:
+      context: ../..
+      dockerfile: mushroom/inference/Dockerfile
+    image: mushroom-inference:${MUSHROOM_IMAGE_TAG:-${IMAGE_TAG:-dev}}
+    restart: unless-stopped
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
+
+networks:
+  internal:
+  proxy:
+    external: true
+    name: ${PROXY_NETWORK:-henskens-app_henskens-network}

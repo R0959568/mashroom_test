@@ -1,0 +1,12 @@
+# What citibike/tests needs on a GitHub runner (.github/workflows/app.yml and retrain.yml): the packages the tested modules
+# import, nothing of the notebooks. Locally the repo's requirements.txt covers these.
+pandas>=2.2
+pyarrow>=17
+numpy
+scikit-learn>=1.3          # TargetEncoder (train.py)
+lightgbm>=4.0
+joblib>=1.2
+boto3>=1.34                # jobs.py, serving.py, retrain.py; the tests validate requests against botocore's API models
+requests>=2.32
+holidays==0.105            # pinned as in ingest/requirements.txt
+pytest>=8.0

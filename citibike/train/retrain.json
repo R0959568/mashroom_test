@@ -1,0 +1,22 @@
+{
+ "_about": "What retrain.py trains and where it promotes to. Hyperparameters: 09's choice (09_choice.json, 10 Oct 2026) as train.py's command line; endpoints and function: notebook 11 (tag s1). The live model's MAE is read from AWS, not from this file.",
+ "region": "us-east-1",
+ "instance_type": "ml.m5.xlarge",
+ "function": "citibike-forecast",
+ "tolerance_pct": 1.0,
+ "horizons": {
+  "day": {
+   "family": "lightgbm",
+   "endpoint": "citibike-day-s1",
+   "serverless_mb": 2048,
+   "hyperparameters": {"n-estimators": 500, "objective": "regression_l1", "learning-rate": 0.049, "num-leaves": 255,
+                       "min-child-samples": 1000, "subsample": 0.84, "colsample-bytree": 0.57, "curve-every": 0}
+  },
+  "rest_of_month": {
+   "family": "extra_trees",
+   "endpoint": "citibike-rest-of-month-s1",
+   "serverless_mb": 6144,
+   "hyperparameters": {"n-estimators": 200, "min-samples-leaf": 50, "max-features": 1.0}
+  }
+ }
+}

@@ -1,0 +1,30 @@
+.result {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.result p {
+  margin: 0;
+}
+
+.result small {
+  color: var(--bm-text-muted);
+}
+
+.poisonous {
+  color: var(--error);
+  font-size: 20px;
+}
+
+.edible {
+  color: var(--ok);
+  font-size: 20px;
+}
+
+.warning {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background: var(--warn-bg);
+  font-weight: 600;
+}

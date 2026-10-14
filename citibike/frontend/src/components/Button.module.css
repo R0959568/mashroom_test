@@ -1,0 +1,32 @@
+.button {
+  font: inherit;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--bm-red);
+  color: #fff;
+}
+
+.primary:not(:disabled):hover {
+  background: #b20a11;
+}
+
+.secondary {
+  background: #fff;
+  color: var(--bm-text);
+  border-color: var(--bm-border);
+}
+
+.secondary:not(:disabled):hover {
+  background: var(--bm-grey-light);
+}

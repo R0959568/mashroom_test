@@ -1,0 +1,13 @@
+.summary {
+  margin: 0 0 var(--space-3);
+  color: var(--bm-text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.right {
+  text-align: right;
+}

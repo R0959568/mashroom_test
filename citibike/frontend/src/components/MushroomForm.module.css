@@ -1,0 +1,43 @@
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.help {
+  margin: 0;
+  color: var(--bm-text-muted);
+}
+
+.source {
+  margin: 0;
+  color: var(--bm-text-muted);
+  font-size: 13px;
+}
+
+.source a {
+  color: var(--info);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--space-3);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 38px;
+  padding: 6px 8px;
+  border: 1px solid var(--bm-border);
+  border-radius: var(--radius);
+  background: var(--bm-surface);
+  color: var(--bm-text);
+  font: inherit;
+}

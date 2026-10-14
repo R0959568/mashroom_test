@@ -1,0 +1,35 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 240px;
+}
+
+.field span {
+  font-weight: 600;
+}
+
+.field small {
+  color: var(--bm-text-muted);
+}
+
+.field input {
+  font: inherit;
+  padding: var(--space-2);
+  border: 1px solid var(--bm-border);
+  border-radius: var(--radius);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--space-2);
+  align-self: flex-end;
+  padding-bottom: 22px; /* aligns with the inputs above their hint line */
+}
